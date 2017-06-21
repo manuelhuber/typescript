@@ -13,7 +13,7 @@ abstract class Lecture {
 class AfpLecture extends Lecture {
 
     constructor() {
-        super('A 0.04')
+        super('A 0.04');
     }
 
     public printInfo() : void {

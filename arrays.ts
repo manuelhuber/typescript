@@ -48,7 +48,7 @@ export class Arrays {
         let listOfNames = data.map((value, index, array) => value.name);
 
         // Map list of names to objects
-        let otherData = listOfNames.map((name, index) => {
+        let otherData : any[] = listOfNames.map((name, index) => {
             return {
                 name: name,
                 gender: 'male',
