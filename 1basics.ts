@@ -12,11 +12,14 @@ export class Basics {
 
         // numbers for ALL types of numbers
         let count : number = 1;
-        count++;
-        ++count;
         const pi : number = 3.14;
         let myHex : number = 0xf00d;
         let mySum : number = count + pi;
+
+        // the default value in JS (and therefore TS) for everything without a value
+        let myOtherValue : any = undefined;
+        console.log(myOtherValue.someProperty); // undefined error
+        let myValue : any = null;
     }
 
     public moreBasicTypes() : void {
@@ -41,13 +44,6 @@ export class Basics {
         yourHopesAndDreams = true;
         yourHopesAndDreams = 'whatever you want';
 
-        // Maps
-        let myMap : { [key : string] : number } = {};
-        let myKey = 'foobar';
-        myMap[ myKey ] = 42;
-        myMap[ 'string literal' ] = 100;
-        // ES6 Syntax - not available when compiling to ES5
-        // let myMap : Map<string, number> = new Map<string,number>();
     }
 
     public objects() : void {
@@ -61,6 +57,7 @@ export class Basics {
         };
         crazyObject[ 'randomProperty' ] = 'new value';
         crazyObject.randomProperty = 'newer value';
+
         crazyObject[ 'newProperty' ] = 'something else';
         console.log(crazyObject.aFunction(1, 2));
 
@@ -74,15 +71,34 @@ export class Basics {
         let result = myFancyObject.multiplyFunction(2, 3);
     }
 
+    public maps() {
+        let myMap : { [key : string] : number } = {};
+        let myKey = 'foobar';
+        myMap[ myKey ] = 42;
+        myMap[ 'string literal' ] = 100;
+        // ES6 Syntax - not available when compiling to ES5
+        // let myMap : Map<string, number> = new Map<string,number>();
+    }
 
-    /**
-     * Access me with this.addFucntion
-     * @param x the first number
-     * @param y the second number
-     * @return {number} the sum of the given numbers
-     */
-    public addFunction(x : number, y : number) : number {
-        return x + y;
+    public TruthyAndFalsy() {
+        // Thruthy and Falsy values are values that are interpreted as false or true
+        // Empty strings and the number 0 are considered falsy
+        let falsy : any[] = [ false, '', 0, NaN, null, undefined ];
+
+        // Empty array and empty object are truthy
+        let truthy : any[] = [ true, 'a', 1, 548923, [], {} ];
+
+        // this is often used for null/undefined checks
+
+        let myObject : any;
+        if (myObject && myObject.myProperty === 'whatever') {
+            console.log('"myObject" will be interpreted as a false and therefore "myObject.myProperty" wont be ' +
+                'evaluated and we dont get a undefined error.');
+        }
+
+        // truthy / falsy values can be made explicit boolean value by the negate operator
+        let myFalsy : number = 0;
+        let myRealFalse : boolean = !!myFalsy;
     }
 
 }

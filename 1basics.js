@@ -11,11 +11,13 @@ var Basics = (function () {
         var truth = true;
         // numbers for ALL types of numbers
         var count = 1;
-        count++;
-        ++count;
         var pi = 3.14;
         var myHex = 0xf00d;
         var mySum = count + pi;
+        // the default value in JS (and therefore TS) for everything without a value
+        var myOtherValue = undefined;
+        console.log(myOtherValue.someProperty); // undefined error
+        var myValue = null;
     };
     Basics.prototype.moreBasicTypes = function () {
         // Arrays
@@ -40,13 +42,6 @@ var Basics = (function () {
         yourHopesAndDreams = 1000000000;
         yourHopesAndDreams = true;
         yourHopesAndDreams = 'whatever you want';
-        // Maps
-        var myMap = {};
-        var myKey = 'foobar';
-        myMap[myKey] = 42;
-        myMap['string literal'] = 100;
-        // ES6 Syntax - not available when compiling to ES5
-        // let myMap : Map<string, number> = new Map<string,number>();
     };
     Basics.prototype.objects = function () {
         // Generate a new object
@@ -70,14 +65,29 @@ var Basics = (function () {
         };
         var result = myFancyObject.multiplyFunction(2, 3);
     };
-    /**
-     * Access me with this.addFucntion
-     * @param x the first number
-     * @param y the second number
-     * @return {number} the sum of the given numbers
-     */
-    Basics.prototype.addFunction = function (x, y) {
-        return x + y;
+    Basics.prototype.maps = function () {
+        var myMap = {};
+        var myKey = 'foobar';
+        myMap[myKey] = 42;
+        myMap['string literal'] = 100;
+        // ES6 Syntax - not available when compiling to ES5
+        // let myMap : Map<string, number> = new Map<string,number>();
+    };
+    Basics.prototype.TruthyAndFalsy = function () {
+        // Thruthy and Falsy values are values that are interpreted as false or true
+        // Empty strings and the number 0 are considered falsy
+        var falsy = [false, '', 0, NaN, null, undefined];
+        // Empty array and empty object are truthy
+        var truthy = [true, 'a', 1, 548923, [], {}];
+        // this is often used for null/undefined checks
+        var myObject;
+        if (myObject && myObject.myProperty === 'whatever') {
+            console.log('"myObject" will be interpreted as a false and therefore "myObject.myProperty" wont be ' +
+                'evaluated and we dont get a undefined error.');
+        }
+        // truthy / falsy values can be made explicit boolean value by the negate operator
+        var myFalsy = 0;
+        var myRealFalse = !!myFalsy;
     };
     return Basics;
 }());

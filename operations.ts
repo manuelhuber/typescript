@@ -1,5 +1,36 @@
 class OperationsShowcase {
 
+    public increamentDecreament() {
+        let count : number = 0;
+        ++count;
+        count++;
+        count--;
+        --count;
+    }
+
+    public booleanExpressions() {
+        // You should check the "truthy" and "falsy" examples first!
+
+        // A boolean expression always returns the last member that needed to be evaluated
+
+        console.log(true && 0 && false); // the expression is only evaluated until the 0 => 0 is be logged
+        console.log(false || 'a string' || true); // the expression is only evaluated until the string => 'a string' is be logged
+        console.log(false || '' || true); // empty string is falsy, so the entire expression is evaluated => true is logged
+
+
+        let object : any;
+        let a : any = object && object.myProperty;
+        console.log(a); // 'undefined'
+
+        object = {
+            myProperty: 'my string'
+        };
+        let b : any = object && object.myProperty;
+        console.log(b); // 'my string'
+
+        let boo : boolean = !!(object && object.myProperty);
+    }
+
     /**
      * Short version of if-else
      */

@@ -1,6 +1,29 @@
 var OperationsShowcase = (function () {
     function OperationsShowcase() {
     }
+    OperationsShowcase.prototype.increamentDecreament = function () {
+        var count = 0;
+        ++count;
+        count++;
+        count--;
+        --count;
+    };
+    OperationsShowcase.prototype.booleanExpressions = function () {
+        // You should check the "truthy" and "falsy" examples first!
+        // A boolean expression always returns the last member that needed to be evaluated
+        console.log(true && 0 && false); // the expression is only evaluated until the 0 => 0 is be logged
+        console.log(false || 'a string' || true); // the expression is only evaluated until the string => 'a string' is be logged
+        console.log(false || '' || true); // empty string is falsy, so the entire expression is evaluated => true is logged
+        var object;
+        var a = object && object.myProperty;
+        console.log(a); // 'undefined'
+        object = {
+            myProperty: 'my string'
+        };
+        var b = object && object.myProperty;
+        console.log(b); // 'my string'
+        var boo = !!(object && object.myProperty);
+    };
     /**
      * Short version of if-else
      */
