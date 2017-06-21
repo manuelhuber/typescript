@@ -1,6 +1,26 @@
 // The spread operator "..." allows
 export class Arrays {
 
+    public basicOperations() : void {
+        let array : number[];
+        // array[ 0 ] = 1; <- Error, array is undefined
+        array = []; // create empty array
+        array[ 0 ] = 1; // [1]
+        array.push(2); // [1,2]
+        array.push(2);
+        array.pop(); // remove last
+        console.log(array = array.concat(3, 4, 5, [ 6, 7, 8, 9 ])); // concat creates new array
+        console.log(array.slice(2, 5)); // new array with entries 3,4,5
+
+        // splice modifies the array. It removes 3 entries (startig from 2) and returns the deleted elements
+        let deletedElemets : number[] = array.splice(2, 3);
+        console.log(deletedElemets); // [3,4,5]
+        console.log(array); // [1,2,6,7,8,9]
+        let previousHead : number = array.shift(); // removes first element and returns it;
+        array.unshift(previousHead); // adds element at the front
+        console.log(array.indexOf(2)); // 1
+    }
+
     public spreadArray() : void {
         let arrayOne : number[] = [ 1, 2, 3 ];
         let arrayTwo : number[] = [ 4, 5, 6 ];
@@ -15,10 +35,6 @@ export class Arrays {
         let [ one, two ] : number[] = numbers;
         console.log(one); // 1
         console.log(two); // 2
-        // Swap variables
-        [ one, two ] = [ two, one ];
-        console.log(one); // 2
-        console.log(two); // 1
 
         let [ first, ...rest ] : number[] = [ 1, 2, 3, 4 ];
         console.log(first); // 1
