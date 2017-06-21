@@ -1,6 +1,12 @@
-// The spread operator "..." allows
+/**
+ * Arrays have no fixed length in TS
+ */
 export class Arrays {
 
+    /**
+     * Basic array operations
+     * Initialize, push, pop, concat, slice, splice, shift, unshift, indexOf
+     */
     public basicOperations() : void {
         let array : number[];
         // array[ 0 ] = 1; <- Error, array is undefined
@@ -9,28 +15,42 @@ export class Arrays {
         array.push(2); // [1,2]
         array.push(2);
         array.pop(); // remove last
-        console.log(array = array.concat(3, 4, 5, [ 6, 7, 8, 9 ])); // concat creates new array
-        console.log(array.slice(2, 5)); // new array with entries 3,4,5
 
-        // splice modifies the array. It removes 3 entries (startig from 2) and returns the deleted elements
-        let deletedElemets : number[] = array.splice(2, 3);
-        console.log(deletedElemets); // [3,4,5]
+        // concat creates new array
+        console.log(array = array.concat(3, 4, 5, [ 6, 7, 8, 9 ])); // [1,2,3,4,5,6,7,8,9]
+
+        // slice returns part of the array from the given start to (excluding) end index
+        console.log(array.slice(2, 5)); // [3,4,5]
+
+        // splice modifies the array. It removes 3 entries (starting from index 2) and returns the deleted elements
+        let deletedElements : number[] = array.splice(2, 3);
+        console.log(deletedElements); // [3,4,5]
         console.log(array); // [1,2,6,7,8,9]
+
         let previousHead : number = array.shift(); // removes first element and returns it;
         array.unshift(previousHead); // adds element at the front
+
         console.log(array.indexOf(2)); // 1
     }
 
-    public spreadArray() : void {
+    /**
+     * The spread operator for arrays
+     */
+    public spread() : void {
         let arrayOne : number[] = [ 1, 2, 3 ];
         let arrayTwo : number[] = [ 4, 5, 6 ];
+
+        // Spread operator "..." spreads the values of the array
         let myBigArray : number[] = [ 0, ...arrayOne, ...arrayTwo, 7 ];
-        arrayOne = [ 100, 101, 102 ];
+        arrayOne = [ 100, 101, 102 ]; // this doesn't change the values spread into myBigArray
         console.log(myBigArray); // [0, 1, 2, 3, 4, 5, 6, 7]
         console.log(arrayOne); // [100, 101, 102]
     }
 
-    public deconstructingArrays() : void {
+    /**
+     * Destructuring arrays to variables
+     */
+    public destructuring() : void {
         let numbers : number[] = [ 1, 2, 3 ];
         let [ one, two ] : number[] = numbers;
         console.log(one); // 1
@@ -41,18 +61,27 @@ export class Arrays {
         console.log(rest); // [2, 3, 4]
     }
 
+    /**
+     * Filteri
+     */
     public filter() : void {
-        let numbers : number[] = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
-        let evenNumbers : number[] = numbers.filter(num => num % 2 == 0);
-
         let duplicates : number[] = [ 1, 1, 1, 1, 2, 2, 3, 4, 4, 5, 5, 5, 6, 7, 8, 8, 9 ];
         // All available parameters for the filter function
-        let uniques : number[] = numbers.filter((value, index, array) => {
+        let uniques : number[] = duplicates.filter((value, index, array) => {
             // array.indexOf returns the index of the first occurrence of the value
             return array.indexOf(value) == index;
         });
+        console.log(uniques); // [1,2,3,4,5,6,7,8,9]
+
+
+        let numbers : number[] = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
+        let evenNumbers : number[] = numbers.filter(num => num % 2 == 0);
+        console.log(evenNumbers); // [2,4,6,8]
     }
 
+    /**
+     * Map
+     */
     public map() : void {
         let data : any [] = [
             {name: 'John', salary: 1983},
@@ -73,6 +102,9 @@ export class Arrays {
         });
     }
 
+    /**
+     * Reduce
+     */
     public reduce() : void {
         let data : any [] = [
             {name: 'John', salary: 1983},
