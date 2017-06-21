@@ -37,9 +37,22 @@ var Functions = (function () {
         var myLambdaWithBody = function (a, b) {
             return a + b;
         };
+        function otherFunction(a, b) {
+            return a + b;
+        }
+        console.log(myFunction(1, 2));
+        console.log(myLambda(1, 2));
+        console.log(myLambdaWithBody(1, 2));
+        console.log(otherFunction(1, 2));
+        // immediatly invoking function
+        (function (a) {
+            console.log(a);
+        })('foo');
+        // also with arrow syntax
+        (function (a) { return console.log(a); })('bar');
     };
     Functions.prototype.functionTyping = function () {
-        // The variable "myAddFullyTyped" is typed and the value ( = the function) is also typed
+        // The variable "myAddFullyTyped" is typed and the value ( = the function) is also fully typed
         var myAddFullyTyped = function (x, y) { return x + y; };
         // The compiler knows the types of x & y based on the typing of "myAdd"
         var myAdd = function (x, y) { return x + y; };
@@ -55,8 +68,8 @@ var Functions = (function () {
             }
             return doctor ? 'Dr. ' : '' + firstName + ' ' + lastNames.join(' ');
         };
-        var myName = fullName(false, "John", "Doe", "Springer", "Smith"); // John Doe Springer Smith
-        var myAlias = fullName(true, "Doom"); // Dr. Doom
+        console.log(fullName(false, "John", "Doe", "Springer", "Smith")); // "John Doe Springer Smith"
+        console.log(fullName(true, "Doom")); // "Dr. Doom"
     };
     Functions.prototype.optionalParameters = function () {
         // Optional parameters are marked with "?"
@@ -69,8 +82,8 @@ var Functions = (function () {
             }
         };
         // Both valid
-        console.log(sayHello("John"));
-        console.log(sayHello());
+        console.log(sayHello("John")); // Hello John
+        console.log(sayHello()); // Howdy Stranger
         // Default values can be specified in the parameters of a function
         var increment = function (base, increment) {
             if (increment === void 0) { increment = 1; }
@@ -79,42 +92,60 @@ var Functions = (function () {
         console.log(increment(3)); // 4
         console.log(increment(3, 2)); // 5
     };
+    // only available with ES6
     Functions.prototype.lazyIterators = function () {
-        function idMaker() {
-            var index;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+        function fib(max) {
+            var a, b, _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
-                        index = 0;
-                        _a.label = 1;
+                        a = 0, b = 1;
+                        _b.label = 1;
                     case 1:
-                        if (!(index < 3)) return [3 /*break*/, 3];
-                        return [4 /*yield*/, index++];
+                        if (!(!max || a + b < max)) return [3 /*break*/, 3];
+                        return [4 /*yield*/, a + b];
                     case 2:
-                        _a.sent();
+                        _b.sent();
+                        _a = [b, a + b], a = _a[0], b = _a[1];
                         return [3 /*break*/, 1];
                     case 3: return [2 /*return*/];
                 }
             });
         }
-        var gen = idMaker();
-        console.log(gen.next()); // { value: 0, done: false }
-        console.log(gen.next()); // { value: 1, done: false }
-        console.log(gen.next()); // { value: 2, done: false }
-        console.log(gen.next()); // { value: undefined, done: true }
-        var iterator = this.lazy(10);
+        var fibNumbers = fib();
+        console.log(fibNumbers.next()); // {value: 1, done: false}
+        console.log(fibNumbers.next()); // {value: 2, done: false}
+        console.log(fibNumbers.next()); // {value: 3, done: false}
+        console.log(fibNumbers.next()); // {value: 5, done: false}
+        console.log(fibNumbers.next()); // {value: 8, done: false}
+        console.log(fibNumbers.next()); // {value: 13, done: false}
+        console.log(Array.from(fib(100))); // [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+        for (var _i = 0, _a = fib(50); _i < _a.length; _i++) {
+            var num = _a[_i];
+            console.log(num); // 1, 2, 3, 5, 8, 13, 21, 34
+        }
+        var iterator = this.iteratorWithLimit(10);
+        console.log(iterator.next()); // {value: 10, done: false}
+        console.log(iterator.next()); // {value: 11, done: false}
+        console.log(iterator.next()); // {value: undefined, done: true}
     };
-    Functions.prototype.lazy = function (count) {
+    // Class level iterator
+    Functions.prototype.iteratorWithLimit = function (count) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    if (!true) return [3 /*break*/, 2];
+                    if (!(count < 12)) return [3 /*break*/, 2];
                     return [4 /*yield*/, count++];
                 case 1:
                     _a.sent();
                     return [3 /*break*/, 0];
                 case 2: return [2 /*return*/];
             }
+        });
+    };
+    Functions.prototype.promises = function () {
+        var promise = new Promise(function (resolve, reject) {
+            resolve('foo');
         });
     };
     return Functions;
