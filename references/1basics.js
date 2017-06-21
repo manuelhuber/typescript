@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var Basics = (function () {
     function Basics() {
-        this.classLevelProperty = 'Access me with "this.classLevelProperty"';
     }
     /**
      * strings, booleans, numbers

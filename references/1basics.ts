@@ -1,8 +1,6 @@
 import { MyInterface } from './4classes';
 export class Basics {
 
-    private classLevelProperty : string = 'Access me with "this.classLevelProperty"';
-
     /**
      * strings, booleans, numbers
      */
