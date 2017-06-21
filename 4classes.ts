@@ -51,6 +51,7 @@ class Person {
     private nickname : string;
 
     constructor(name : string) {
+        // Class level properties and functions are accessed with the "this" keyword
         this.name = name;
         this.nickname = name + "y";
         this.hairStyle = "great";

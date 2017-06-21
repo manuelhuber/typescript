@@ -8,6 +8,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+/**
+ * Abstract classes with abstract and implemented method
+ */
 var Lecture = (function () {
     // class properties can be declared in the constructor parameters by adding a access level like "public"
     function Lecture(room) {
@@ -18,6 +21,9 @@ var Lecture = (function () {
     };
     return Lecture;
 }());
+/**
+ * Extending an abstract class, implementing abstract methods, adding a new method
+ */
 var AfpLecture = (function (_super) {
     __extends(AfpLecture, _super);
     function AfpLecture() {
@@ -26,6 +32,9 @@ var AfpLecture = (function (_super) {
     AfpLecture.prototype.printInfo = function () {
         console.log('Learn all the things you will ever need in your life in this lecture!');
     };
+    /**
+     * this is not required by the abstract class
+     */
     AfpLecture.prototype.printHomework = function () {
         console.log('Coursera Functional Programming Principles in Scala For Enterprise');
     };
@@ -33,12 +42,14 @@ var AfpLecture = (function (_super) {
 }(Lecture));
 var LectureShowcase = (function () {
     function LectureShowcase() {
+    }
+    LectureShowcase.prototype.showAfpLecture = function () {
         // let lecture : Lecture = new Lecture(); <- Not possible since it's abstract
         var lecture = new AfpLecture();
-        lecture.printInfo();
-        lecture.printLocation();
+        lecture.printInfo(); // 'Learn all the things you will ever need in your life in this lecture!'
+        lecture.printLocation(); // 'Room A 0.04'
         // lecture.printHomework(); <- Not possible since it's not a member of Lecture
         lecture.printHomework(); // Possible when casting to AfpLecture
-    }
+    };
     return LectureShowcase;
 }());
