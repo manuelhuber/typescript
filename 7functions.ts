@@ -70,7 +70,7 @@ class Functions {
         console.log(gen.next()); // { value: 0, done: false }
         console.log(gen.next()); // { value: 1, done: false }
         console.log(gen.next()); // { value: 2, done: false }
-        console.log(gen.next()); // { done: true }
+        console.log(gen.next()); // { value: undefined, done: true }
 
         let iterator = this.lazy(10);
 

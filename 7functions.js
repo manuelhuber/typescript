@@ -101,7 +101,7 @@ var Functions = (function () {
         console.log(gen.next()); // { value: 0, done: false }
         console.log(gen.next()); // { value: 1, done: false }
         console.log(gen.next()); // { value: 2, done: false }
-        console.log(gen.next()); // { done: true }
+        console.log(gen.next()); // { value: undefined, done: true }
         var iterator = this.lazy(10);
     };
     Functions.prototype.lazy = function (count) {
