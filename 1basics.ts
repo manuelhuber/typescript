@@ -1,4 +1,4 @@
-import { MyInterface } from './classes';
+import { MyInterface } from './4classes';
 export class Basics {
 
     private classLevelProperty : string = 'Access me with "this.classLevelProperty"';
@@ -63,12 +63,16 @@ export class Basics {
 
         // Create an object that conforms to an interface
         // If you miss a property from the interface the compiler (and any good IDE) will show you an error
+        let aSecondProperty : boolean = false;
         let myFancyObject : MyInterface = {
             someProperty: 'with a value',
-            aSecondProperty: false,
+            aSecondProperty,
             multiplyFunction: (a : number, b : number) => a * b
         };
-        let result = myFancyObject.multiplyFunction(2, 3);
+        console.log(myFancyObject.multiplyFunction(2, 3)); // 6
+        console.log(myFancyObject.someProperty); // 'with a value'
+        console.log(myFancyObject.aSecondProperty); // 'false'
+
     }
 
     public maps() {
@@ -82,6 +86,7 @@ export class Basics {
 
     public TruthyAndFalsy() {
         // Thruthy and Falsy values are values that are interpreted as false or true
+
         // Empty strings and the number 0 are considered falsy
         let falsy : any[] = [ false, '', 0, NaN, null, undefined ];
 

@@ -58,12 +58,15 @@ var Basics = (function () {
         console.log(crazyObject.aFunction(1, 2));
         // Create an object that conforms to an interface
         // If you miss a property from the interface the compiler (and any good IDE) will show you an error
+        var aSecondProperty = false;
         var myFancyObject = {
             someProperty: 'with a value',
-            aSecondProperty: false,
+            aSecondProperty: aSecondProperty,
             multiplyFunction: function (a, b) { return a * b; }
         };
-        var result = myFancyObject.multiplyFunction(2, 3);
+        console.log(myFancyObject.multiplyFunction(2, 3)); // 6
+        console.log(myFancyObject.someProperty); // 'with a value'
+        console.log(myFancyObject.aSecondProperty); // 'false'
     };
     Basics.prototype.maps = function () {
         var myMap = {};
