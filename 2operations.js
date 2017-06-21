@@ -1,13 +1,19 @@
 var OperationsShowcase = (function () {
     function OperationsShowcase() {
     }
-    OperationsShowcase.prototype.increamentDecreament = function () {
+    /**
+     * Increment and Decrement numbers
+     */
+    OperationsShowcase.prototype.incrementDecrement = function () {
         var count = 0;
         ++count;
         count++;
         count--;
         --count;
     };
+    /**
+     * Swapping variables in a single line
+     */
     OperationsShowcase.prototype.swapVariables = function () {
         var foo = 'bar';
         var bar = 'foo';
@@ -15,21 +21,23 @@ var OperationsShowcase = (function () {
         console.log(foo + bar); // foobar
         var _a;
     };
-    OperationsShowcase.prototype.booleanExpressions = function () {
-        // You should check the "truthy" and "falsy" examples first!
+    /**
+     * Boolean expressions with falsy and truthy values
+     * You should check the TruthyAndFalsy examples in the basics first!
+     */
+    OperationsShowcase.prototype.booleanExpressions = function (maybeUndefined) {
         // A boolean expression always returns the last member that needed to be evaluated
         console.log(true && 0 && false); // the expression is only evaluated until the 0 => 0 is be logged
         console.log(false || 'a string' || true); // the expression is only evaluated until the string => 'a string' is be logged
         console.log(false || '' || true); // empty string is falsy, so the entire expression is evaluated => true is logged
         var object;
-        var a = object && object.myProperty;
-        console.log(a); // 'undefined'
+        console.log(object && object.myProperty); // 'undefined'
         object = {
             myProperty: 'my string'
         };
-        var b = object && object.myProperty;
-        console.log(b); // 'my string'
-        var boo = !!(object && object.myProperty);
+        console.log(object && object.myProperty); // 'my string'
+        console.log(!!(object && object.myProperty)); // true
+        console.log(maybeUndefined || 'alternative value'); // logs the value of maybeUndefined if available or 'alternative value' otherwise
     };
     /**
      * Short version of if-else
@@ -49,6 +57,9 @@ var OperationsShowcase = (function () {
             myOtherNumber = valueIfFalse;
         }
     };
+    /**
+     * while, do while
+     */
     OperationsShowcase.prototype.whileLoops = function () {
         var c = 10;
         while (c > 0) {
@@ -59,6 +70,9 @@ var OperationsShowcase = (function () {
             console.log(c--);
         } while (c > 0);
     };
+    /**
+     * for loops, iterate over arrays
+     */
     OperationsShowcase.prototype.forLoops = function () {
         for (var i = 10; i > 0; i++) {
             console.log(i);
@@ -69,7 +83,10 @@ var OperationsShowcase = (function () {
             console.log(entry); // 1, "string", false
         }
     };
-    OperationsShowcase.prototype.switch = function (dmg) {
+    /**
+     * Switch statement
+     */
+    OperationsShowcase.prototype.switchStatement = function (dmg) {
         switch (dmg) {
             case 0:
                 console.log('Its but a scratch');
@@ -79,6 +96,9 @@ var OperationsShowcase = (function () {
                 break;
             case 2:
                 console.log('Lets call it a draw');
+                break;
+            default:
+                console.log('Im invincible!');
                 break;
         }
     };

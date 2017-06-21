@@ -1,6 +1,9 @@
 class OperationsShowcase {
 
-    public increamentDecreament() : void {
+    /**
+     * Increment and Decrement numbers
+     */
+    public incrementDecrement() : void {
         let count : number = 0;
         ++count;
         count++;
@@ -8,6 +11,9 @@ class OperationsShowcase {
         --count;
     }
 
+    /**
+     * Swapping variables in a single line
+     */
     public swapVariables() : void {
         let foo : string = 'bar';
         let bar : string = 'foo';
@@ -15,27 +21,27 @@ class OperationsShowcase {
         console.log(foo + bar); // foobar
     }
 
-    public booleanExpressions() : void {
-        // You should check the "truthy" and "falsy" examples first!
-
+    /**
+     * Boolean expressions with falsy and truthy values
+     * You should check the TruthyAndFalsy examples in the basics first!
+     */
+    public booleanExpressions(maybeUndefined : string) : void {
         // A boolean expression always returns the last member that needed to be evaluated
-
         console.log(true && 0 && false); // the expression is only evaluated until the 0 => 0 is be logged
         console.log(false || 'a string' || true); // the expression is only evaluated until the string => 'a string' is be logged
         console.log(false || '' || true); // empty string is falsy, so the entire expression is evaluated => true is logged
 
-
         let object : any;
-        let a : any = object && object.myProperty;
-        console.log(a); // 'undefined'
+        console.log(object && object.myProperty); // 'undefined'
 
         object = {
             myProperty: 'my string'
         };
-        let b : any = object && object.myProperty;
-        console.log(b); // 'my string'
+        console.log(object && object.myProperty); // 'my string'
 
-        let boo : boolean = !!(object && object.myProperty);
+        console.log(!!(object && object.myProperty)); // true
+
+        console.log(maybeUndefined || 'alternative value'); // logs the value of maybeUndefined if available or 'alternative value' otherwise
     }
 
     /**
@@ -58,7 +64,9 @@ class OperationsShowcase {
         }
     }
 
-
+    /**
+     * while, do while
+     */
     public whileLoops() : void {
         let c : number = 10;
         while (c > 0) {
@@ -72,6 +80,9 @@ class OperationsShowcase {
 
     }
 
+    /**
+     * for loops, iterate over arrays
+     */
     public forLoops() : void {
 
         for (let i : number = 10; i > 0; i++) {
@@ -85,7 +96,10 @@ class OperationsShowcase {
         }
     }
 
-    public switch(dmg : number) : void {
+    /**
+     * Switch statement
+     */
+    public switchStatement(dmg : number) : void {
         switch (dmg) {
             case 0:
                 console.log('Its but a scratch');
@@ -95,6 +109,9 @@ class OperationsShowcase {
                 break;
             case 2:
                 console.log('Lets call it a draw');
+                break;
+            default:
+                console.log('Im invincible!');
                 break;
         }
     }
