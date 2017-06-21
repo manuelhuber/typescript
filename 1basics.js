@@ -4,28 +4,44 @@ var Basics = (function () {
     function Basics() {
         this.classLevelProperty = 'Access me with "this.classLevelProperty"';
     }
+    /**
+     * strings, booleans, numbers
+     */
     Basics.prototype.basicTypes = function () {
         // For variables, use keyword "let" or "const"
         var myString = 'Something';
         myString = 'something else';
+        // Type are also interfered based on their initial value
+        var type = 'inferred'; // type string is inferred
+        type = 10; // type error
         var truth = true;
         // numbers for ALL types of numbers
         var count = 1;
         var pi = 3.14;
         var myHex = 0xf00d;
         var mySum = count + pi;
-        // the default value in JS (and therefore TS) for everything without a value
-        var myOtherValue = undefined;
-        console.log(myOtherValue.someProperty); // undefined error
+    };
+    /**
+     * undefined, null
+     */
+    Basics.prototype.undefinedAndNull = function () {
+        // the default value for everything without a value is undefined
+        var something;
+        console.log(something); // undefined
+        console.log(something.someProperty); // undefined error
+        // Null is available to explicitly give something no value
         var myValue = null;
     };
+    /**
+     * Arrays, tuple, enums, any
+     */
     Basics.prototype.moreBasicTypes = function () {
         // Arrays
         var myArray = [1, 2, 3];
-        // Touples
-        var myTouple = ["John", 24];
-        console.log(myTouple[0]); // prints the first value
-        console.log(myTouple[1]); // prints the second value
+        // Tuples
+        var myTuple = ["John", 24];
+        console.log(myTuple[0]); // "John"
+        console.log(myTuple[1]); // 24
         // Enum
         var Weather;
         (function (Weather) {
@@ -43,6 +59,9 @@ var Basics = (function () {
         yourHopesAndDreams = true;
         yourHopesAndDreams = 'whatever you want';
     };
+    /**
+     * objects
+     */
     Basics.prototype.objects = function () {
         // Generate a new object
         var emptyObject = {};
@@ -68,6 +87,9 @@ var Basics = (function () {
         console.log(myFancyObject.someProperty); // 'with a value'
         console.log(myFancyObject.aSecondProperty); // 'false'
     };
+    /**
+     * maps
+     */
     Basics.prototype.maps = function () {
         var myMap = {};
         var myKey = 'foobar';
@@ -76,6 +98,9 @@ var Basics = (function () {
         // ES6 Syntax - not available when compiling to ES5
         // let myMap : Map<string, number> = new Map<string,number>();
     };
+    /**
+     * truthy and falsy values
+     */
     Basics.prototype.TruthyAndFalsy = function () {
         // Thruthy and Falsy values are values that are interpreted as false or true
         // Empty strings and the number 0 are considered falsy

@@ -3,10 +3,17 @@ export class Basics {
 
     private classLevelProperty : string = 'Access me with "this.classLevelProperty"';
 
+    /**
+     * strings, booleans, numbers
+     */
     public basicTypes() : void {
         // For variables, use keyword "let" or "const"
         let myString : string = 'Something';
         myString = 'something else';
+
+        // Type are also interfered based on their initial value
+        let type = 'inferred'; // type string is inferred
+        type = 10; // type error
 
         let truth : boolean = true;
 
@@ -15,21 +22,33 @@ export class Basics {
         const pi : number = 3.14;
         let myHex : number = 0xf00d;
         let mySum : number = count + pi;
-
-        // the default value in JS (and therefore TS) for everything without a value
-        let myOtherValue : any = undefined;
-        console.log(myOtherValue.someProperty); // undefined error
-        let myValue : any = null;
     }
 
+    /**
+     * undefined, null
+     */
+    public undefinedAndNull() : void {
+        // the default value for everything without a value is undefined
+        let something;
+        console.log(something); // undefined
+        console.log(something.someProperty); // undefined error
+
+        // Null is available to explicitly give something no value
+        let myValue = null;
+    }
+
+
+    /**
+     * Arrays, tuple, enums, any
+     */
     public moreBasicTypes() : void {
         // Arrays
         let myArray : number[] = [ 1, 2, 3 ];
 
-        // Touples
-        let myTouple : [ string, number ] = [ "John", 24 ];
-        console.log(myTouple[ 0 ]); // prints the first value
-        console.log(myTouple[ 1 ]); // prints the second value
+        // Tuples
+        let myTuple : [ string, number ] = [ "John", 24 ];
+        console.log(myTuple[ 0 ]); // "John"
+        console.log(myTuple[ 1 ]); // 24
 
         // Enum
         enum Weather {Rainy, Sunny, Cloudy}
@@ -43,9 +62,11 @@ export class Basics {
         yourHopesAndDreams = 1000000000;
         yourHopesAndDreams = true;
         yourHopesAndDreams = 'whatever you want';
-
     }
 
+    /**
+     * objects
+     */
     public objects() : void {
         // Generate a new object
         let emptyObject : any = {};
@@ -75,6 +96,9 @@ export class Basics {
 
     }
 
+    /**
+     * maps
+     */
     public maps() {
         let myMap : { [key : string] : number } = {};
         let myKey = 'foobar';
@@ -84,6 +108,9 @@ export class Basics {
         // let myMap : Map<string, number> = new Map<string,number>();
     }
 
+    /**
+     * truthy and falsy values
+     */
     public TruthyAndFalsy() {
         // Thruthy and Falsy values are values that are interpreted as false or true
 
@@ -94,7 +121,6 @@ export class Basics {
         let truthy : any[] = [ true, 'a', 1, 548923, [], {} ];
 
         // this is often used for null/undefined checks
-
         let myObject : any;
         if (myObject && myObject.myProperty === 'whatever') {
             console.log('"myObject" will be interpreted as a false and therefore "myObject.myProperty" wont be ' +
