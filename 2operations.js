@@ -69,5 +69,18 @@ var OperationsShowcase = (function () {
             console.log(entry); // 1, "string", false
         }
     };
+    OperationsShowcase.prototype.switch = function (dmg) {
+        switch (dmg) {
+            case 0:
+                console.log('Its but a scratch');
+                break;
+            case 1:
+                console.log('Just a flesh wound');
+                break;
+            case 2:
+                console.log('Lets call it a draw');
+                break;
+        }
+    };
     return OperationsShowcase;
 }());
