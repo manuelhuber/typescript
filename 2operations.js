@@ -8,6 +8,13 @@ var OperationsShowcase = (function () {
         count--;
         --count;
     };
+    OperationsShowcase.prototype.swapVariables = function () {
+        var foo = 'bar';
+        var bar = 'foo';
+        _a = [bar, foo], foo = _a[0], bar = _a[1];
+        console.log(foo + bar); // foobar
+        var _a;
+    };
     OperationsShowcase.prototype.booleanExpressions = function () {
         // You should check the "truthy" and "falsy" examples first!
         // A boolean expression always returns the last member that needed to be evaluated

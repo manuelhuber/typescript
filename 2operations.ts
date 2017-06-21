@@ -1,6 +1,6 @@
 class OperationsShowcase {
 
-    public increamentDecreament() {
+    public increamentDecreament() : void {
         let count : number = 0;
         ++count;
         count++;
@@ -8,7 +8,14 @@ class OperationsShowcase {
         --count;
     }
 
-    public booleanExpressions() {
+    public swapVariables() : void {
+        let foo : string = 'bar';
+        let bar : string = 'foo';
+        [ foo, bar ] = [ bar, foo ];
+        console.log(foo + bar); // foobar
+    }
+
+    public booleanExpressions() : void {
         // You should check the "truthy" and "falsy" examples first!
 
         // A boolean expression always returns the last member that needed to be evaluated
@@ -57,6 +64,7 @@ class OperationsShowcase {
         while (c > 0) {
             console.log(c--);
         }
+
         c = 10;
         do {
             console.log(c--);
