@@ -13,7 +13,7 @@ var Basics = (function () {
         myString = 'something else';
         // Type are also interfered based on their initial value
         var type = 'inferred'; // type string is inferred
-        type = 10; // type error
+        // type = 10; <- type error
         var truth = true;
         // numbers for ALL types of numbers
         var count = 1;

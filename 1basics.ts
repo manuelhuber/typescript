@@ -13,7 +13,7 @@ export class Basics {
 
         // Type are also interfered based on their initial value
         let type = 'inferred'; // type string is inferred
-        type = 10; // type error
+        // type = 10; <- type error
 
         let truth : boolean = true;
 
