@@ -28,18 +28,26 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var Functions = (function () {
     function Functions() {
     }
+    /**
+     * Named functions, anonymous functions, arrow syntax, immediately executing functions
+     */
     Functions.prototype.functionSyntax = function () {
         // Without typing for now
-        var myFunction = function (a, b) {
-            return a + b;
-        };
-        var myLambda = function (a, b) { return a + b; };
-        var myLambdaWithBody = function (a, b) {
-            return a + b;
-        };
+        // Named function
         function otherFunction(a, b) {
             return a + b;
         }
+        // Anonymous function asigned to a variable
+        var myFunction = function (a, b) {
+            return a + b;
+        };
+        // arrow syntax
+        var myLambda = function (a, b) { return a + b; };
+        // arrow syntax with body
+        var myLambdaWithBody = function (a, b) {
+            return a + b;
+        };
+        // all of the above can the called in the same way
         console.log(myFunction(1, 2));
         console.log(myLambda(1, 2));
         console.log(myLambdaWithBody(1, 2));
@@ -51,6 +59,9 @@ var Functions = (function () {
         // also with arrow syntax
         (function (a) { return console.log(a); })('bar');
     };
+    /**
+     * Typing parameters and return values
+     */
     Functions.prototype.functionTyping = function () {
         // The variable "myAddFullyTyped" is typed and the value ( = the function) is also fully typed
         var myAddFullyTyped = function (x, y) { return x + y; };
@@ -60,6 +71,9 @@ var Functions = (function () {
         var myAdd2 = function (x, y) { return x + y; };
         // let foo : string = myAdd2(1, 2); <- error, since the compiler knows myAdd2 will return a number
     };
+    /**
+     * Function acception variable amount of parameters
+     */
     Functions.prototype.unknownNumberOfParameters = function () {
         var fullName = function (doctor, firstName) {
             var lastNames = [];
@@ -71,7 +85,10 @@ var Functions = (function () {
         console.log(fullName(false, "John", "Doe", "Springer", "Smith")); // "John Doe Springer Smith"
         console.log(fullName(true, "Doom")); // "Dr. Doom"
     };
-    Functions.prototype.optionalParameters = function () {
+    /**
+     * optional parameters, default values
+     */
+    Functions.prototype.parameterOptions = function () {
         // Optional parameters are marked with "?"
         var sayHello = function (name) {
             if (name) {
@@ -92,8 +109,12 @@ var Functions = (function () {
         console.log(increment(3)); // 4
         console.log(increment(3, 2)); // 5
     };
-    // only available with ES6
+    /**
+     * Generators, lazy iterators
+     * Careful: only available with ES6!
+     */
     Functions.prototype.lazyIterators = function () {
+        // The star marks a generator
         function fib(max) {
             var a, b, _a;
             return __generator(this, function (_b) {
@@ -103,8 +124,10 @@ var Functions = (function () {
                         _b.label = 1;
                     case 1:
                         if (!(!max || a + b < max)) return [3 /*break*/, 3];
+                        // generators use the yield keyword
                         return [4 /*yield*/, a + b];
                     case 2:
+                        // generators use the yield keyword
                         _b.sent();
                         _a = [b, a + b], a = _a[0], b = _a[1];
                         return [3 /*break*/, 1];
@@ -113,39 +136,39 @@ var Functions = (function () {
             });
         }
         var fibNumbers = fib();
+        // The return value is a object with a "value" and a "done" property
         console.log(fibNumbers.next()); // {value: 1, done: false}
         console.log(fibNumbers.next()); // {value: 2, done: false}
         console.log(fibNumbers.next()); // {value: 3, done: false}
         console.log(fibNumbers.next()); // {value: 5, done: false}
         console.log(fibNumbers.next()); // {value: 8, done: false}
         console.log(fibNumbers.next()); // {value: 13, done: false}
+        // Combine all results into a array
         console.log(Array.from(fib(100))); // [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
-        for (var _i = 0, _a = fib(50); _i < _a.length; _i++) {
+        // Iterate over all results
+        for (var _i = 0, _a = fib(100); _i < _a.length; _i++) {
             var num = _a[_i];
-            console.log(num); // 1, 2, 3, 5, 8, 13, 21, 34
+            console.log(num); // 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
         }
         var iterator = this.iteratorWithLimit(10);
         console.log(iterator.next()); // {value: 10, done: false}
         console.log(iterator.next()); // {value: 11, done: false}
         console.log(iterator.next()); // {value: undefined, done: true}
     };
-    // Class level iterator
+    /**
+     * Class level iterator with a limit
+     */
     Functions.prototype.iteratorWithLimit = function (count) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    if (!(count < 12)) return [3 /*break*/, 2];
+                    if (!true) return [3 /*break*/, 2];
                     return [4 /*yield*/, count++];
                 case 1:
                     _a.sent();
                     return [3 /*break*/, 0];
                 case 2: return [2 /*return*/];
             }
-        });
-    };
-    Functions.prototype.promises = function () {
-        var promise = new Promise(function (resolve, reject) {
-            resolve('foo');
         });
     };
     return Functions;
