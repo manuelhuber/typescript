@@ -11,7 +11,7 @@ export class Arrays {
     }
 
     public deconstructingArrays() : void {
-        let numbers : number[] = [ 1, 2 ];
+        let numbers : number[] = [ 1, 2, 3 ];
         let [ one, two ] : number[] = numbers;
         console.log(one); // 1
         console.log(two); // 2

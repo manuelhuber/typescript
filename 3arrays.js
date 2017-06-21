@@ -13,7 +13,7 @@ var Arrays = (function () {
         console.log(arrayOne); // [100, 101, 102]
     };
     Arrays.prototype.deconstructingArrays = function () {
-        var numbers = [1, 2];
+        var numbers = [1, 2, 3];
         var one = numbers[0], two = numbers[1];
         console.log(one); // 1
         console.log(two); // 2
