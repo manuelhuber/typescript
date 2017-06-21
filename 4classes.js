@@ -14,21 +14,24 @@ var ClassesShowcase = (function () {
     function ClassesShowcase() {
     }
     ClassesShowcase.prototype.newInstanceOfClass = function () {
-        var howard = new Employee("Howard", "Sales");
+        var howard = new Employee("Howard", "sales");
         // Public property can be accessed and modified
         howard.hairStyle = "freaky";
         console.log(howard.id); // getter function is accessed like a property
         // howard.id = "foo"; // error, since it's a read only property (no setter function)
         howard.salary = 1;
         howard.salary = 100;
-        howard.salary = 123456789; // value won't be updated
+        howard.salary = 123456789; // value won't be updated (see setter function)
         console.log(howard.salary); // 100
-        console.log(howard.introduction());
+        console.log(howard.introduction()); // 'Hello, my name is Howard and I work in sales.`
         // console.log(howard.name); // error since it's protected
     };
     return ClassesShowcase;
 }());
 exports.ClassesShowcase = ClassesShowcase;
+/**
+ * A class with public, protected and private properties
+ */
 var Person = (function () {
     function Person(name) {
         this.name = name;
@@ -37,6 +40,9 @@ var Person = (function () {
     }
     return Person;
 }());
+/**
+ * Extending another class, accessing their properties, getter / setter functions
+ */
 var Employee = (function (_super) {
     __extends(Employee, _super);
     function Employee(name, department) {
@@ -69,6 +75,9 @@ var Employee = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    /**
+     * String templating
+     */
     Employee.prototype.introduction = function () {
         // Access to this.name but not this.nickname
         return "Hello, my name is " + this.name + " and I work in " + this.department + ".";
