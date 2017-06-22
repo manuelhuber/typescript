@@ -26,6 +26,10 @@ class OperationsShowcase {
      * You should check the TruthyAndFalsy examples in the basics first!
      */
     public booleanExpressions(maybeUndefined : string) : void {
+        // For equal checks use triple equals sign
+        console.log('a' === 'a');
+        console.log('a' !== 'a');
+
         // A boolean expression always returns the last member that needed to be evaluated
         console.log(true && 0 && false); // the expression is only evaluated until the 0 => 0 is be logged
         console.log(false || 'a string' || true); // the expression is only evaluated until the string => 'a string' is be logged

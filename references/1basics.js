@@ -102,8 +102,7 @@ var Basics = (function () {
         // this is often used for null/undefined checks
         var myObject;
         if (myObject && myObject.myProperty === 'whatever') {
-            console.log('"myObject" will be interpreted as a false and therefore "myObject.myProperty" wont be ' +
-                'evaluated and we dont get a undefined error.');
+            // myObject is defined and myProperty is a truthy value
         }
         // truthy / falsy values can be made explicit boolean value by the negate operator
         var myFalsy = 0;

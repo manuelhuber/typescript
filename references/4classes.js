@@ -25,6 +25,11 @@ var ClassesShowcase = (function () {
         console.log(howard.salary); // 100
         console.log(howard.introduction()); // 'Hello, my name is Howard and I work in sales.`
         // console.log(howard.name); // error since it's protected
+        var interfaceConform = {
+            someProperty: 'string',
+            aSecondProperty: false,
+            multiplyFunction: function (a, b) { return a + b; }
+        };
     };
     return ClassesShowcase;
 }());

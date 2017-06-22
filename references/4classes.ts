@@ -16,6 +16,12 @@ export class ClassesShowcase {
 
         console.log(howard.introduction()); // 'Hello, my name is Howard and I work in sales.`
         // console.log(howard.name); // error since it's protected
+
+        let interfaceConform : MyInterface = {
+            someProperty: 'string',
+            aSecondProperty: false,
+            multiplyFunction: (a, b) => a + b
+        }
     }
 
 }
