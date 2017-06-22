@@ -1,4 +1,3 @@
-import { MyInterface } from './4classes';
 export class Basics {
 
     /**
@@ -15,7 +14,7 @@ export class Basics {
 
         let truth : boolean = true;
 
-        // numbers for ALL types of numbers
+        // number for ALL types of numbers
         let count : number = 1;
         const pi : number = 3.14;
         let myHex : number = 0xf00d;
@@ -66,31 +65,24 @@ export class Basics {
      * objects
      */
     public objects() : void {
-        // Generate a new object
+        // Create a empty object
         let emptyObject : any = {};
-        let crazyObject : any = {
-            randomProperty: 'value',
-            someNumber: 1,
-            aFunction: (a, b) => a + b,
-            evenMore: false
-        };
-        crazyObject[ 'randomProperty' ] = 'new value';
-        crazyObject.randomProperty = 'newer value';
 
-        crazyObject[ 'newProperty' ] = 'something else';
-        console.log(crazyObject.aFunction(1, 2));
-
-        // Create an object that conforms to an interface
-        // If you miss a property from the interface the compiler (and any good IDE) will show you an error
-        let aSecondProperty : boolean = false;
-        let myFancyObject : MyInterface = {
+        // this variable will become a property of the new object
+        let aSecondProperty : string = 'with another value';
+        // Properties can be inserted when creating the object
+        let myFancyObject : any = {
             someProperty: 'with a value',
             aSecondProperty,
             multiplyFunction: (a : number, b : number) => a * b
         };
+        // New properties can be added at will (if type of object is any)
+        myFancyObject.newProperty = 'something else';
+
+        // Bracket and dot sytnax are both valid ways to access a property
+        console.log(myFancyObject[ 'someProperty' ]); // 'with a value'
+        console.log(myFancyObject.aSecondProperty); // 'with another value'
         console.log(myFancyObject.multiplyFunction(2, 3)); // 6
-        console.log(myFancyObject.someProperty); // 'with a value'
-        console.log(myFancyObject.aSecondProperty); // 'false'
 
     }
 
@@ -103,7 +95,7 @@ export class Basics {
         myMap[ myKey ] = 42;
         myMap[ 'string literal' ] = 100;
         // ES6 Syntax - not available when compiling to ES5
-        // let myMap : Map<string, number> = new Map<string,number>();
+        // let myMapES6 : Map<string, number> = new Map<string, number>();
     }
 
     /**

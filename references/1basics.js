@@ -14,7 +14,7 @@ var Basics = (function () {
         var type = 'inferred'; // type string is inferred
         // type = 10; <- type error
         var truth = true;
-        // numbers for ALL types of numbers
+        // number for ALL types of numbers
         var count = 1;
         var pi = 3.14;
         var myHex = 0xf00d;
@@ -62,29 +62,22 @@ var Basics = (function () {
      * objects
      */
     Basics.prototype.objects = function () {
-        // Generate a new object
+        // Create a empty object
         var emptyObject = {};
-        var crazyObject = {
-            randomProperty: 'value',
-            someNumber: 1,
-            aFunction: function (a, b) { return a + b; },
-            evenMore: false
-        };
-        crazyObject['randomProperty'] = 'new value';
-        crazyObject.randomProperty = 'newer value';
-        crazyObject['newProperty'] = 'something else';
-        console.log(crazyObject.aFunction(1, 2));
-        // Create an object that conforms to an interface
-        // If you miss a property from the interface the compiler (and any good IDE) will show you an error
-        var aSecondProperty = false;
+        // this variable will become a property of the new object
+        var aSecondProperty = 'with another value';
+        // Properties can be inserted when creating the object
         var myFancyObject = {
             someProperty: 'with a value',
             aSecondProperty: aSecondProperty,
             multiplyFunction: function (a, b) { return a * b; }
         };
+        // New properties can be added at will (if type of object is any)
+        myFancyObject.newProperty = 'something else';
+        // Bracket and dot sytnax are both valid ways to access a property
+        console.log(myFancyObject['someProperty']); // 'with a value'
+        console.log(myFancyObject.aSecondProperty); // 'with another value'
         console.log(myFancyObject.multiplyFunction(2, 3)); // 6
-        console.log(myFancyObject.someProperty); // 'with a value'
-        console.log(myFancyObject.aSecondProperty); // 'false'
     };
     /**
      * maps
@@ -95,7 +88,7 @@ var Basics = (function () {
         myMap[myKey] = 42;
         myMap['string literal'] = 100;
         // ES6 Syntax - not available when compiling to ES5
-        // let myMap : Map<string, number> = new Map<string,number>();
+        // let myMapES6 : Map<string, number> = new Map<string, number>();
     };
     /**
      * truthy and falsy values
