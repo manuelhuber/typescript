@@ -24,3 +24,7 @@ function averageTweetLength(tweets, minLength, hashtag) {
     });
     return count === 0 ? 0 : total / count;
 }
+function teaser() {
+    var tens = ['10', '10', '10'];
+    console.log(tens.map(parseInt)); // [10, NaN, 2]
+}

@@ -11,9 +11,7 @@ class Hashtag {
     contains(tweet : Tweet) : boolean {
         return tweet.indexOf("#" + this.name) >= 0;
     }
-
 }
-
 
 function averageTweetLength(tweets : Tweet[], minLength : number, hashtag? : Hashtag) : number {
     let count : number = 0;
@@ -29,3 +27,7 @@ function averageTweetLength(tweets : Tweet[], minLength : number, hashtag? : Has
     return count === 0 ? 0 : total / count;
 }
 
+function teaser() {
+    let tens : string[] = [ '10', '10', '10' ];
+    console.log(tens.map(parseInt)); // [10, NaN, 2]
+}
