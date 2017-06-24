@@ -1,50 +1,21 @@
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var Functions = (function () {
-    function Functions() {
-    }
+class Functions {
     /**
      * Named functions, anonymous functions, arrow syntax, immediately executing functions
      */
-    Functions.prototype.functionSyntax = function () {
+    functionSyntax() {
         // Without typing for now
         // Named function
         function otherFunction(a, b) {
             return a + b;
         }
         // Anonymous function asigned to a variable
-        var myFunction = function (a, b) {
+        const myFunction = function (a, b) {
             return a + b;
         };
         // arrow syntax
-        var myLambda = function (a, b) { return a + b; };
+        const myLambda = (a, b) => a + b;
         // arrow syntax with body
-        var myLambdaWithBody = function (a, b) {
+        const myLambdaWithBody = (a, b) => {
             return a + b;
         };
         // all of the above can the called in the same way
@@ -57,40 +28,34 @@ var Functions = (function () {
             console.log(a);
         })('foo');
         // also with arrow syntax
-        (function (a) { return console.log(a); })('bar');
-    };
+        (a => console.log(a))('bar');
+    }
     /**
      * Typing parameters and return values
      */
-    Functions.prototype.functionTyping = function () {
+    functionTyping() {
         // The variable "myAddFullyTyped" is typed and the value ( = the function) is also fully typed
-        var myAddFullyTyped = function (x, y) { return x + y; };
+        const myAddFullyTyped = (x, y) => x + y;
         // The compiler knows the types of x & y based on the typing of "myAdd"
-        var myAdd = function (x, y) { return x + y; };
+        const myAdd = (x, y) => x + y;
         // The compiler knows the type of "myAdd2" based on the typing of it's value
-        var myAdd2 = function (x, y) { return x + y; };
+        const myAdd2 = (x, y) => x + y;
         // let foo : string = myAdd2(1, 2); <- error, since the compiler knows myAdd2 will return a number
-    };
+    }
     /**
      * Function acception variable amount of parameters
      */
-    Functions.prototype.unknownNumberOfParameters = function () {
-        var fullName = function (doctor, firstName) {
-            var lastNames = [];
-            for (var _i = 2; _i < arguments.length; _i++) {
-                lastNames[_i - 2] = arguments[_i];
-            }
-            return doctor ? 'Dr. ' : '' + firstName + ' ' + lastNames.join(' ');
-        };
+    unknownNumberOfParameters() {
+        const fullName = (doctor, firstName, ...lastNames) => doctor ? 'Dr. ' : '' + firstName + ' ' + lastNames.join(' ');
         console.log(fullName(false, "John", "Doe", "Springer", "Smith")); // "John Doe Springer Smith"
         console.log(fullName(true, "Doom")); // "Dr. Doom"
-    };
+    }
     /**
      * optional parameters, default values
      */
-    Functions.prototype.parameterOptions = function () {
+    parameterOptions() {
         // Optional parameters are marked with "?"
-        var sayHello = function (name) {
+        const sayHello = (name) => {
             if (name) {
                 console.log('Hello ' + name);
             }
@@ -102,40 +67,25 @@ var Functions = (function () {
         console.log(sayHello("John")); // Hello John
         console.log(sayHello()); // Howdy Stranger
         // Default values can be specified in the parameters of a function
-        var increment = function (base, increment) {
-            if (increment === void 0) { increment = 1; }
-            return base + increment;
-        };
+        const increment = (base, increment = 1) => base + increment;
         console.log(increment(3)); // 4
         console.log(increment(3, 2)); // 5
-    };
+    }
     /**
      * Generators, lazy iterators
      * Careful: only available with ES6!
      */
-    Functions.prototype.lazyIterators = function () {
+    lazyIterators() {
         // The star marks a generator
-        function fib(max) {
-            var a, b, _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        a = 0, b = 1;
-                        _b.label = 1;
-                    case 1:
-                        if (!(!max || a + b < max)) return [3 /*break*/, 3];
-                        // generators use the yield keyword
-                        return [4 /*yield*/, a + b];
-                    case 2:
-                        // generators use the yield keyword
-                        _b.sent();
-                        _a = [b, a + b], a = _a[0], b = _a[1];
-                        return [3 /*break*/, 1];
-                    case 3: return [2 /*return*/];
-                }
-            });
+        function* fib(max) {
+            let a = 0, b = 1;
+            while (!max || a + b < max) {
+                // generators use the yield keyword
+                yield a + b;
+                [a, b] = [b, a + b];
+            }
         }
-        var fibNumbers = fib();
+        let fibNumbers = fib();
         // The return value is a object with a "value" and a "done" property
         console.log(fibNumbers.next()); // {value: 1, done: false}
         console.log(fibNumbers.next()); // {value: 2, done: false}
@@ -146,30 +96,20 @@ var Functions = (function () {
         // Combine all results into a array
         console.log(Array.from(fib(100))); // [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
         // Iterate over all results
-        for (var _i = 0, _a = fib(100); _i < _a.length; _i++) {
-            var num = _a[_i];
+        for (let num of fib(100)) {
             console.log(num); // 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
         }
-        var iterator = this.iteratorWithLimit(10);
+        let iterator = this.iteratorWithLimit(10);
         console.log(iterator.next()); // {value: 10, done: false}
         console.log(iterator.next()); // {value: 11, done: false}
         console.log(iterator.next()); // {value: undefined, done: true}
-    };
+    }
     /**
      * Class level iterator with a limit
      */
-    Functions.prototype.iteratorWithLimit = function (count) {
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!(count < 12)) return [3 /*break*/, 2];
-                    return [4 /*yield*/, count++];
-                case 1:
-                    _a.sent();
-                    return [3 /*break*/, 0];
-                case 2: return [2 /*return*/];
-            }
-        });
-    };
-    return Functions;
-}());
+    *iteratorWithLimit(count) {
+        while (count < 12) {
+            yield count++;
+        }
+    }
+}

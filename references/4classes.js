@@ -1,20 +1,6 @@
-"use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var ClassesShowcase = (function () {
-    function ClassesShowcase() {
-    }
-    ClassesShowcase.prototype.newInstanceOfClass = function () {
-        var howard = new Employee("Howard", "sales");
+export class ClassesShowcase {
+    newInstanceOfClass() {
+        let howard = new Employee("Howard", "sales");
         // Public property can be accessed and modified
         howard.hairStyle = "freaky";
         console.log(howard.id); // getter function is accessed like a property
@@ -25,68 +11,54 @@ var ClassesShowcase = (function () {
         console.log(howard.salary); // 100
         console.log(howard.introduction()); // 'Hello, my name is Howard and I work in sales.`
         // console.log(howard.name); // error since it's protected
-        var interfaceConform = {
+        let interfaceConform = {
             someProperty: 'string',
             aSecondProperty: false,
-            multiplyFunction: function (a, b) { return a + b; }
+            multiplyFunction: (a, b) => a + b
         };
-    };
-    return ClassesShowcase;
-}());
-exports.ClassesShowcase = ClassesShowcase;
+    }
+}
 /**
  * A class with public, protected and private properties
  */
-var Person = (function () {
-    function Person(name) {
+class Person {
+    constructor(name) {
         // Class level properties and functions are accessed with the "this" keyword
         this.name = name;
         this.nickname = name + "y";
         this.hairStyle = "great";
     }
-    return Person;
-}());
+}
 /**
  * Extending another class, accessing their properties, getter / setter functions
  */
-var Employee = (function (_super) {
-    __extends(Employee, _super);
-    function Employee(name, department) {
-        var _this = _super.call(this, name) || this;
-        _this.department = department;
-        _this.hairStyle = "professional";
-        return _this;
+class Employee extends Person {
+    // A getter - can be read like a property
+    get id() {
+        return this.name + this.department;
     }
-    Object.defineProperty(Employee.prototype, "id", {
-        // A getter - can be read like a property
-        get: function () {
-            return this.name + this.department;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Employee.prototype, "salary", {
-        get: function () {
-            return this._salary;
-        },
-        set: function (newSalary) {
-            if (newSalary > 0 && newSalary < 100000) {
-                this._salary = newSalary;
-            }
-            else {
-                // no value update
-                console.log("Pay the man properly!");
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
+    get salary() {
+        return this._salary;
+    }
+    set salary(newSalary) {
+        if (newSalary > 0 && newSalary < 100000) {
+            this._salary = newSalary;
+        }
+        else {
+            // no value update
+            console.log("Pay the man properly!");
+        }
+    }
+    constructor(name, department) {
+        super(name);
+        this.department = department;
+        this.hairStyle = "professional";
+    }
     /**
      * String templating
      */
-    Employee.prototype.introduction = function () {
+    introduction() {
         // Access to this.name but not this.nickname
-        return "Hello, my name is " + this.name + " and I work in " + this.department + ".";
-    };
-    return Employee;
-}(Person));
+        return `Hello, my name is ${this.name} and I work in ${this.department}.`;
+    }
+}

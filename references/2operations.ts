@@ -27,13 +27,14 @@ class OperationsShowcase {
      */
     public booleanExpressions(maybeUndefined : string) : void {
         // For equal checks use triple equals sign
-        console.log('a' === 'a');
-        console.log('a' !== 'a');
+        console.log('1' == 1); // true
+        console.log('1' === 1); // false
+        console.log('1' !== 1); // true
 
         // A boolean expression always returns the last member that needed to be evaluated
-        console.log(true && 0 && false); // the expression is only evaluated until the 0 => 0 is be logged
-        console.log(false || 'a string' || true); // the expression is only evaluated until the string => 'a string' is be logged
-        console.log(false || '' || true); // empty string is falsy, so the entire expression is evaluated => true is logged
+        console.log(true && 0 && false); // 0
+        console.log(false || 'a string' || true); // 'a string'
+        console.log(false || '' || true); // true
 
         let object : any;
         console.log(object && object.myProperty); // 'undefined'
@@ -42,9 +43,7 @@ class OperationsShowcase {
             myProperty: 'my string'
         };
         console.log(object && object.myProperty); // 'my string'
-
         console.log(!!(object && object.myProperty)); // true
-
         console.log(maybeUndefined || 'alternative value'); // logs the value of maybeUndefined if available or 'alternative value' otherwise
     }
 
@@ -57,15 +56,16 @@ class OperationsShowcase {
         let valueIfFalse : number = 2;
 
         // Ternary operator syntax
-        let myNumber = condition ? valueIfTrue : valueIfFalse;
+        let myNumber = condition ?
+            valueIfTrue :
+            valueIfFalse;
 
         // same as
-        let myOtherNumber;
+
         if (condition) {
-            myOtherNumber = valueIfTrue;
-        } else {
-            myOtherNumber = valueIfFalse;
-        }
+            myNumber = valueIfTrue;
+        } else myNumber = valueIfFalse;
+
     }
 
     /**
