@@ -72,7 +72,7 @@ class Functions {
         // The star marks a generator
         function* fib(max) {
             let a = 0, b = 1;
-            while (!max || a + b < max) {
+            while (!max || a <= max) {
                 // generators use the yield keyword
                 yield a;
                 [a, b] = [b, a + b];
@@ -89,10 +89,10 @@ class Functions {
         console.log(fibNumbers.next()); // {value: 8, done: false}
         console.log(fibNumbers.next()); // {value: 13, done: false}
         // Combine all results into a array
-        console.log(Array.from(fib(100))); // [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+        console.log(Array.from(fib(100))); // [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
         // Iterate over all results
         for (let num of fib(100)) {
-            console.log(num); // 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
+            console.log(num); // 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
         }
         function* lazy12(n) {
             while (n < 12) {
