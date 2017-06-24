@@ -13,8 +13,8 @@ export class Arrays {
         array = []; // create empty array
         array[ 0 ] = 1; // [1]
         array.push(2); // [1,2]
-        array.push(2);
-        array.pop(); // remove last
+        array.push(2); // [1,2,2]
+        array.pop(); // [1,2]
 
         // concat creates new array
         console.log(array = array.concat(3, 4, 5, [ 6, 7, 8, 9 ])); // [1,2,3,4,5,6,7,8,9]
@@ -62,7 +62,7 @@ export class Arrays {
     }
 
     /**
-     * Filteri
+     * Filter
      */
     public filter() : void {
         let duplicates : number[] = [ 1, 1, 1, 1, 2, 2, 3, 4, 4, 5, 5, 5, 6, 7, 8, 8, 9 ];

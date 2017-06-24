@@ -5,25 +5,25 @@ class Functions {
     functionSyntax() {
         // Without typing for now
         // Named function
-        function otherFunction(a, b) {
+        function namedFunction(a, b) {
             return a + b;
         }
         // Anonymous function asigned to a variable
-        const myFunction = function (a, b) {
+        const anonymousFunction = function (a, b) {
             return a + b;
         };
         // arrow syntax
-        const myLambda = (a, b) => a + b;
+        const arrowSyntax = (a, b) => a + b;
         // arrow syntax with body
-        const myLambdaWithBody = (a, b) => {
+        const ArrowSyntaxWithBody = (a, b) => {
             return a + b;
         };
         // all of the above can the called in the same way
-        console.log(myFunction(1, 2));
-        console.log(myLambda(1, 2));
-        console.log(myLambdaWithBody(1, 2));
-        console.log(otherFunction(1, 2));
-        // immediatly invoking function
+        console.log(namedFunction(1, 2));
+        console.log(anonymousFunction(1, 2));
+        console.log(arrowSyntax(1, 2));
+        console.log(ArrowSyntaxWithBody(1, 2));
+        // immediately invoking function
         (function (a) {
             console.log(a);
         })('foo');
@@ -47,26 +47,19 @@ class Functions {
      */
     unknownNumberOfParameters() {
         const fullName = (doctor, firstName, ...lastNames) => doctor ? 'Dr. ' : '' + firstName + ' ' + lastNames.join(' ');
-        console.log(fullName(false, "John", "Doe", "Springer", "Smith")); // "John Doe Springer Smith"
-        console.log(fullName(true, "Doom")); // "Dr. Doom"
+        fullName(false, "John", "Doe", "Springer", "Smith"); // "John Doe Springer Smith"
+        fullName(true, "Doom"); // "Dr. Doom"
     }
     /**
      * optional parameters, default values
      */
     parameterOptions() {
         // Optional parameters are marked with "?"
-        const sayHello = (name) => {
-            if (name) {
-                console.log('Hello ' + name);
-            }
-            else {
-                console.log('Howdy Stranger!');
-            }
+        const greeting = (name) => {
+            return 'Hello ' + name ? name : 'stranger';
         };
-        // Both valid
-        console.log(sayHello("John")); // Hello John
-        console.log(sayHello()); // Howdy Stranger
-        // Default values can be specified in the parameters of a function
+        console.log(greeting('John')); // Hello John
+        console.log(greeting()); // Hello stranger
         const increment = (base, increment = 1) => base + increment;
         console.log(increment(3)); // 4
         console.log(increment(3, 2)); // 5
@@ -81,12 +74,14 @@ class Functions {
             let a = 0, b = 1;
             while (!max || a + b < max) {
                 // generators use the yield keyword
-                yield a + b;
+                yield a;
                 [a, b] = [b, a + b];
             }
         }
         let fibNumbers = fib();
         // The return value is a object with a "value" and a "done" property
+        console.log(fibNumbers.next()); // {value: 0, done: false}
+        console.log(fibNumbers.next()); // {value: 1, done: false}
         console.log(fibNumbers.next()); // {value: 1, done: false}
         console.log(fibNumbers.next()); // {value: 2, done: false}
         console.log(fibNumbers.next()); // {value: 3, done: false}
@@ -99,7 +94,12 @@ class Functions {
         for (let num of fib(100)) {
             console.log(num); // 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
         }
-        let iterator = this.iteratorWithLimit(10);
+        function* lazy12(n) {
+            while (n < 12) {
+                yield n++;
+            }
+        }
+        let iterator = lazy12(10);
         console.log(iterator.next()); // {value: 10, done: false}
         console.log(iterator.next()); // {value: 11, done: false}
         console.log(iterator.next()); // {value: undefined, done: true}

@@ -26,10 +26,11 @@ class OperationsShowcase {
      * You should check the TruthyAndFalsy examples in the basics first!
      */
     public booleanExpressions(maybeUndefined : string) : void {
+        let a : any = '1';
         // For equal checks use triple equals sign
-        console.log('1' == 1); // true
-        console.log('1' === 1); // false
-        console.log('1' !== 1); // true
+        console.log(a == 1); // true
+        console.log(a === 1); // false
+        console.log(a !== 1); // true
 
         // A boolean expression always returns the last member that needed to be evaluated
         console.log(true && 0 && false); // 0
@@ -77,10 +78,9 @@ class OperationsShowcase {
             console.log(c--);
         }
 
-        c = 10;
         do {
-            console.log(c--);
-        } while (c > 0)
+            console.log(c++);
+        } while (c < 10)
 
     }
 

@@ -14,8 +14,8 @@
         array = []; // create empty array
         array[0] = 1; // [1]
         array.push(2); // [1,2]
-        array.push(2);
-        array.pop(); // remove last
+        array.push(2); // [1,2,2]
+        array.pop(); // [1,2]
         // concat creates new array
         console.log(array = array.concat(3, 4, 5, [6, 7, 8, 9])); // [1,2,3,4,5,6,7,8,9]
         // slice returns part of the array from the given start to (excluding) end index
@@ -53,7 +53,7 @@
         console.log(rest); // [2, 3, 4]
     }
     /**
-     * Filteri
+     * Filter
      */
     filter() {
         let duplicates = [1, 1, 1, 1, 2, 2, 3, 4, 4, 5, 5, 5, 6, 7, 8, 8, 9];
