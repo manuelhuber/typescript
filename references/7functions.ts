@@ -134,7 +134,7 @@ class Functions {
      * Class level iterator with a limit
      */
     public *iteratorWithLimit(count : number) : IterableIterator<number> {
-        while (true) {
+        while (count < 12) {
             yield count++;
         }
     }
