@@ -79,6 +79,7 @@ class Functions {
         console.log(greeting('John')); // Hello John
         console.log(greeting()); // Hello stranger
 
+        // Optional parameter can have a default value defined
         const increment = (base : number, increment : number = 1) : number => base + increment;
         console.log(increment(3)); // 4
         console.log(increment(3, 2)); // 5

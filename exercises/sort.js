@@ -41,7 +41,7 @@ var ExerciseFour = (function () {
 ExerciseFour = __decorate([
     core_1.Component({
         selector: 'sort',
-        template: "<div>\n    <div>Write a merge sort</div>\n    <div>\n        <div>{{unsorted}}</div>\n        <div>{{sorted}}</div>\n    </div>\n</div>\n  "
+        template: "<div>\n    <div>Write a merge sort</div>\n    <div>\n        <div>unsorted:</div>\n        <div>{{unsorted}}</div>\n        <div>sorted</div>\n        <div>{{sorted}}</div>\n    </div>\n</div>\n  "
     })
 ], ExerciseFour);
 exports.ExerciseFour = ExerciseFour;

@@ -7,7 +7,9 @@ import { BrowserModule } from '@angular/platform-browser';
   template: `<div>
     <div>Write a merge sort</div>
     <div>
+        <div>unsorted:</div>
         <div>{{unsorted}}</div>
+        <div>sorted</div>
         <div>{{sorted}}</div>
     </div>
 </div>
