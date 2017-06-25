@@ -37,9 +37,11 @@ class Employee extends Person {
     get id() {
         return this.name + this.department;
     }
+    // A getter that returns the value of a private property
     get salary() {
         return this._salary;
     }
+    // A setter that updates the private property if certain conditions are fullfilled
     set salary(newSalary) {
         if (newSalary > 0 && newSalary < 100000) {
             this._salary = newSalary;
