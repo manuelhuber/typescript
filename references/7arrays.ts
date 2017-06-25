@@ -66,9 +66,7 @@ export class Arrays {
      */
     public filter() : void {
         let duplicates : number[] = [ 1, 1, 1, 1, 2, 2, 3, 4, 4, 5, 5, 5, 6, 7, 8, 8, 9 ];
-        // All available parameters for the filter function
         let uniques : number[] = duplicates.filter((value, index, array) => {
-            // array.indexOf returns the index of the first occurrence of the value
             return array.indexOf(value) == index;
         });
         console.log(uniques); // [1,2,3,4,5,6,7,8,9]
@@ -90,7 +88,7 @@ export class Arrays {
             {name: 'Phil', salary: 3215} ];
 
         // Unused parameters "index" and "array" could be omitted
-        let listOfNames = data.map((value, index, array) => value.name);
+        let listOfNames : string[] = data.map((value, index, array) => value.name);
 
         // Map list of names to objects
         let otherData : any[] = listOfNames.map((name, index) => {
@@ -114,6 +112,10 @@ export class Arrays {
 
         // the reduce function needs a function and a starting value as parameter
         // Unused parameters "currentIndex" and "array" could be omitted
+        // let reduceFunction : (accumulator : F, value : T, index : number, array : T[]) => F;
+        // let startingValue : F;
+        // data.reduce(reduceFunction, startingValue)
+
         let totalSalaryCost = data.reduce((sum, currentValue, currentIndex, array) => {
             return sum + currentValue.salary;
         }, 0);

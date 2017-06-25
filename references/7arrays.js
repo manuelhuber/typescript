@@ -57,9 +57,7 @@
      */
     filter() {
         let duplicates = [1, 1, 1, 1, 2, 2, 3, 4, 4, 5, 5, 5, 6, 7, 8, 8, 9];
-        // All available parameters for the filter function
         let uniques = duplicates.filter((value, index, array) => {
-            // array.indexOf returns the index of the first occurrence of the value
             return array.indexOf(value) == index;
         });
         console.log(uniques); // [1,2,3,4,5,6,7,8,9]
@@ -100,6 +98,9 @@
         ];
         // the reduce function needs a function and a starting value as parameter
         // Unused parameters "currentIndex" and "array" could be omitted
+        // let reduceFunction : (accumulator : F, value : T, index : number, array : T[]) => F;
+        // let startingValue : F;
+        // data.reduce(reduceFunction, startingValue)
         let totalSalaryCost = data.reduce((sum, currentValue, currentIndex, array) => {
             return sum + currentValue.salary;
         }, 0);
