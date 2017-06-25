@@ -8,6 +8,7 @@ class Functions {
         function namedFunction(a, b) {
             return a + b;
         }
+
         // Anonymous function asigned to a variable
         const anonymousFunction = function (a, b) {
             return a + b;
@@ -30,6 +31,7 @@ class Functions {
         // also with arrow syntax
         (a => console.log(a))('bar');
     }
+
     /**
      * Typing parameters and return values
      */
@@ -42,6 +44,7 @@ class Functions {
         const myAdd2 = (x, y) => x + y;
         // let foo : string = myAdd2(1, 2); <- error, since the compiler knows myAdd2 will return a number
     }
+
     /**
      * Function acception variable amount of parameters
      */
@@ -50,6 +53,7 @@ class Functions {
         fullName(false, "John", "Doe", "Springer", "Smith"); // "John Doe Springer Smith"
         fullName(true, "Doom"); // "Dr. Doom"
     }
+
     /**
      * optional parameters, default values
      */
@@ -65,6 +69,7 @@ class Functions {
         console.log(increment(3)); // 4
         console.log(increment(3, 2)); // 5
     }
+
     /**
      * Generators, lazy iterators
      * Careful: only available with ES6!
@@ -79,6 +84,7 @@ class Functions {
                 [a, b] = [b, a + b];
             }
         }
+
         let fibNumbers = fib();
         // The return value is a object with a "value" and a "done" property
         console.log(fibNumbers.next()); // {value: 0, done: false}
@@ -100,11 +106,13 @@ class Functions {
                 yield n++;
             }
         }
+
         let iterator = lazy12(10);
         console.log(iterator.next()); // {value: 10, done: false}
         console.log(iterator.next()); // {value: 11, done: false}
         console.log(iterator.next()); // {value: undefined, done: true}
     }
+
     /**
      * Class level iterator with a limit
      */

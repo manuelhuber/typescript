@@ -3,7 +3,8 @@
  */
 /**
  * Arrays have no fixed length in TS
- */ export class Arrays {
+ */
+export class Arrays {
     /**
      * Basic array operations
      * Initialize, push, pop, concat, slice, splice, shift, unshift, indexOf
@@ -28,6 +29,7 @@
         array.unshift(previousHead); // adds element at the front
         console.log(array.indexOf(2)); // 1
     }
+
     /**
      * The spread operator for arrays
      */
@@ -40,6 +42,7 @@
         console.log(myBigArray); // [0, 1, 2, 3, 4, 5, 6, 7]
         console.log(arrayOne); // [100, 101, 102]
     }
+
     /**
      * Destructuring arrays to variables
      */
@@ -52,6 +55,7 @@
         console.log(first); // 1
         console.log(rest); // [2, 3, 4]
     }
+
     /**
      * Filter
      */
@@ -65,15 +69,16 @@
         let evenNumbers = numbers.filter(num => num % 2 == 0);
         console.log(evenNumbers); // [2,4,6,8]
     }
+
     /**
      * Map
      */
     map() {
         let data = [
-            { name: 'John', salary: 1983 },
-            { name: 'Martin', salary: 654 },
-            { name: 'Dave', salary: 65584 },
-            { name: 'Phil', salary: 3215 }
+            {name: 'John', salary: 1983},
+            {name: 'Martin', salary: 654},
+            {name: 'Dave', salary: 65584},
+            {name: 'Phil', salary: 3215}
         ];
         // Unused parameters "index" and "array" could be omitted
         let listOfNames = data.map((value, index, array) => value.name);
@@ -86,15 +91,16 @@
             };
         });
     }
+
     /**
      * Reduce
      */
     reduce() {
         let data = [
-            { name: 'John', salary: 1983 },
-            { name: 'Martin', salary: 654 },
-            { name: 'Dave', salary: 65584 },
-            { name: 'Phil', salary: 3215 }
+            {name: 'John', salary: 1983},
+            {name: 'Martin', salary: 654},
+            {name: 'Dave', salary: 65584},
+            {name: 'Phil', salary: 3215}
         ];
         // the reduce function needs a function and a starting value as parameter
         // Unused parameters "currentIndex" and "array" could be omitted

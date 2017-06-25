@@ -3,15 +3,15 @@
  */
 abstract class Lecture {
 
-    // class properties can be declared in the constructor parameters by adding a access level like "public"
-    constructor(public room : string) {
-    }
+  // class properties can be declared in the constructor parameters by adding a access level like "public"
+  constructor(public room : string) {
+  }
 
-    printLocation() : void {
-        console.log("Room " + this.room);
-    }
+  printLocation() : void {
+    console.log("Room " + this.room);
+  }
 
-    public abstract printInfo() : void;
+  public abstract printInfo() : void;
 }
 
 /**
@@ -19,32 +19,32 @@ abstract class Lecture {
  */
 class AfpLecture extends Lecture {
 
-    constructor() {
-        super('A 0.04');
-    }
+  constructor() {
+    super('A 0.04');
+  }
 
-    public printInfo() : void {
-        console.log('Learn all the things you will ever need in your life in this lecture!');
-    }
+  public printInfo() : void {
+    console.log('Learn all the things you will ever need in your life in this lecture!');
+  }
 
-    /**
-     * this is not required by the abstract class
-     */
-    public printHomework() : void {
-        console.log('Coursera Functional Programming Principles in Scala For Enterprise');
-    }
+  /**
+   * this is not required by the abstract class
+   */
+  public printHomework() : void {
+    console.log('Coursera Functional Programming Principles in Scala For Enterprise');
+  }
 }
 
 class LectureShowcase {
-    showAfpLecture() {
-        // let lecture : Lecture = new Lecture(); <- Not possible since it's abstract
-        let lecture : Lecture = new AfpLecture();
+  showAfpLecture() {
+    // let lecture : Lecture = new Lecture(); <- Not possible since it's abstract
+    let lecture : Lecture = new AfpLecture();
 
-        lecture.printInfo(); // 'Learn all the things you will ever need in your life in this lecture!'
+    lecture.printInfo(); // 'Learn all the things you will ever need in your life in this lecture!'
 
-        lecture.printLocation(); // 'Room A 0.04'
+    lecture.printLocation(); // 'Room A 0.04'
 
-        // lecture.printHomework(); <- Not possible since it's not a member of Lecture
-        (<AfpLecture>lecture).printHomework(); // Possible when casting to AfpLecture
-    }
+    // lecture.printHomework(); <- Not possible since it's not a member of Lecture
+    (<AfpLecture>lecture).printHomework(); // Possible when casting to AfpLecture
+  }
 }

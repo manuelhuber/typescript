@@ -9,6 +9,7 @@ class OperationsShowcase {
         count--;
         --count;
     }
+
     /**
      * Swapping variables in a single line
      */
@@ -18,6 +19,7 @@ class OperationsShowcase {
         [foo, bar] = [bar, foo];
         console.log(foo + bar); // foobar
     }
+
     /**
      * Boolean expressions with falsy and truthy values
      * You should check the TruthyAndFalsy examples in the basics first!
@@ -41,6 +43,7 @@ class OperationsShowcase {
         console.log(!!(object && object.myProperty)); // true
         console.log(maybeUndefined || 'alternative value'); // logs the value of maybeUndefined if available or 'alternative value' otherwise
     }
+
     /**
      * Short version of if-else
      */
@@ -59,6 +62,7 @@ class OperationsShowcase {
         else
             myNumber = valueIfFalse;
     }
+
     /**
      * while, do while
      */
@@ -71,6 +75,7 @@ class OperationsShowcase {
             console.log(c++);
         } while (c < 10);
     }
+
     /**
      * for loops, iterate over arrays
      */
@@ -83,6 +88,7 @@ class OperationsShowcase {
             console.log(entry); // 1, "string", false
         }
     }
+
     /**
      * Switch statement
      */

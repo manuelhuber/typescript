@@ -6,6 +6,7 @@ class Lecture {
     constructor(room) {
         this.room = room;
     }
+
     printLocation() {
         console.log("Room " + this.room);
     }
@@ -17,9 +18,11 @@ class AfpLecture extends Lecture {
     constructor() {
         super('A 0.04');
     }
+
     printInfo() {
         console.log('Learn all the things you will ever need in your life in this lecture!');
     }
+
     /**
      * this is not required by the abstract class
      */

@@ -16,6 +16,7 @@ export class Basics {
         let myHex = 0xf00d;
         let mySum = count + pi;
     }
+
     /**
      * undefined, null
      */
@@ -27,6 +28,7 @@ export class Basics {
         // Null is available to explicitly give something no value
         let myValue = null;
     }
+
     /**
      * Arrays, tuple, enums, any
      */
@@ -54,6 +56,7 @@ export class Basics {
         yourHopesAndDreams = true;
         yourHopesAndDreams = 'whatever you want';
     }
+
     /**
      * objects
      */
@@ -75,6 +78,7 @@ export class Basics {
         console.log(myFancyObject.aSecondProperty); // 'with another value'
         console.log(myFancyObject.multiplyFunction(2, 3)); // 6
     }
+
     /**
      * maps
      */
@@ -86,6 +90,7 @@ export class Basics {
         // ES6 Syntax - not available when compiling to ES5
         // let myMapES6 : Map<string, number> = new Map<string, number>();
     }
+
     /**
      * truthy and falsy values
      */
