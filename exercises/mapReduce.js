@@ -1,12 +1,11 @@
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-        var c = arguments.length,
-            r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-    };
-Object.defineProperty(exports, "__esModule", {value: true});
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 require("rxjs/add/operator/map");
 var ExerciseThree = (function () {
@@ -23,9 +22,7 @@ var ExerciseThree = (function () {
             ['aneetacarol', 22]];
         // Map with key = username, value = total retweet count
         this.retweets = {};
-        http.get('data/rawTweets.json').map(function (a) {
-            return a.json();
-        }).subscribe(function (rawTweets) {
+        http.get('data/rawTweets.json').map(function (a) { return a.json(); }).subscribe(function (rawTweets) {
             // TODO map the raw tweets to the Tweet class
             /**
              * The needed data is stored in the following properties
@@ -37,9 +34,7 @@ var ExerciseThree = (function () {
                 return new Tweet(raw.user.screen_name, raw.retweet_count, raw.text);
             });
             // TODO remove tweets that have less than 10 retweets
-            var goodTweets = tweets.filter(function (tweet) {
-                return tweet.retweets > 10;
-            });
+            var goodTweets = tweets.filter(function (tweet) { return tweet.retweets > 10; });
             // TODO reduce the array to a map of retweets
             _this.retweets = goodTweets.reduce(function (result, tweet) {
                 result[tweet.user] = result[tweet.user] ? result[tweet.user] + tweet.retweets : tweet.retweets;
@@ -47,16 +42,13 @@ var ExerciseThree = (function () {
             }, _this.retweets);
         });
     }
-
     Object.defineProperty(ExerciseThree.prototype, "data", {
         get: function () {
             var _this = this;
             return Object.keys(this.retweets)
                 .map(function (key) {
-                    return [key, _this.retweets[key]];
-                }).sort(function (a, b) {
-                    return b[1] - a[1];
-                });
+                return [key, _this.retweets[key]];
+            }).sort(function (a, b) { return b[1] - a[1]; });
         },
         enumerable: true,
         configurable: true
@@ -79,6 +71,5 @@ var Tweet = (function () {
         this.retweets = retweets;
         this.message = message;
     }
-
     return Tweet;
 }());

@@ -27,7 +27,9 @@ export class ExerciseFour {
       return x;
     } else {
       let middle = Math.round(x.length / 2);
-      return this.merge(this.mergeSort(x.slice(0, middle)), this.mergeSort(x.slice(middle, x.length)));
+      return this.merge(
+        this.mergeSort(x.slice(0, middle)),
+        this.mergeSort(x.slice(middle, x.length)));
     }
   }
 
