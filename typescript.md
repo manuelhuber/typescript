@@ -58,6 +58,11 @@ Tuples | [type1, type2] | ['John', 24]
 Objects | any (or class/interface name) | {property: value}
 Map | { [key : string\|number ] : type} | ["key1":value1, "key2": value2]
 
+Custom data types can be declares with the ``type`` keyword. Example declaring a function type
+````typescript
+type MyType = (a : string) => boolean;
+````
+
 ### Objects
 Create using curly brackets or the constructor of a class.
 ```typescript

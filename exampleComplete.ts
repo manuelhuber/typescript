@@ -1,6 +1,6 @@
-type Predicate = (t : Tweet) => boolean;
+type Predicate<T> = (t : T) => boolean;
 
-function and(predicates : Predicate[]) : Predicate {
+function and<T>(predicates : Predicate<T>[]) : Predicate<T> {
   return (e) => predicates.every(p => p(e));
 }
 
@@ -9,12 +9,12 @@ function average(nums : number[]) : number {
   return nums.length === 0 ? 0 : total / nums.length;
 }
 
-function tweetLengths(tweets : Tweet[], conditions : Predicate[]) : number[] {
+function tweetLengths(tweets : Tweet[], conditions : Predicate<Tweet>[]) : number[] {
   const validTweets : Tweet[] = tweets.filter(and(conditions));
   return validTweets.map(tweet => tweet.length);
 }
 
-function averageTweetLengthFu(tweets : Tweet[], conditions : Predicate[]) : number {
+function averageTweetLengthFu(tweets : Tweet[], conditions : Predicate<Tweet>[]) : number {
   return average(tweetLengths(tweets, conditions));
 }
 
