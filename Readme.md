@@ -1,3 +1,5 @@
+Check out the exercises (and code references) on Plunker: http://embed.plnkr.co/brFPdrzbC3mjEqLtxTdF/
+
 # Typescript
 1. [Basics](#basics)
     + [Declarations](#declarations)
